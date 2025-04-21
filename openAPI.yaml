@@ -13,7 +13,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: './dto/PaymentRequest'
+              $ref: '#/components/schemas/PaymentRequest'
       responses:
         '200':
           description: Payment Success!
@@ -27,9 +27,30 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./dto/WebhookRequest"
+              $ref: "#/components/schemas/WebhookRequest"
       responses:
         '200':
           description: Webhook created successfully!
         '409':
-          description: 
+          description: Conflict - webhook already exists
+
+components:
+  schemas:
+    PaymentRequest:
+      type: object
+      required:
+        - email
+        - cvc
+        - expiryDate
+        - cardHolderName
+        - zipCode
+        - cardNumber
+        - invoices
+        - amount
+        - refNumber
+      properties:
+        email:
+          type: string
+          format: email
+        cardNumber:
+          type: string

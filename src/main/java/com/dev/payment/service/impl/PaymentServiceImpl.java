@@ -25,11 +25,12 @@ public class PaymentServiceImpl implements PaymentService {
     public Response createPayment(PaymentRequest paymentRequest) throws Exception {
         Payment payment = new Payment();
         payment.setEmail(paymentRequest.getEmail());
-        payment.setCvc(paymentRequest.getCvc());
-        payment.setZipCode(paymentRequest.getZipCode());
-        payment.setExpiryDate(paymentRequest.getExpiryDate());
-        payment.setCardHolderName(paymentRequest.getCardHolderName());
         payment.setCardNumber(AESUtil.encrypt(paymentRequest.getCardNumber()));
+        payment.setExpiryDate(paymentRequest.getExpiryDate());
+        payment.setCvc(paymentRequest.getCvc());
+        payment.setCardHolderName(paymentRequest.getCardHolderName());
+        payment.setCountry(paymentRequest.getCountry());
+        payment.setZipCode(paymentRequest.getZipCode());
         payment.setInvoices(paymentRequest.getInvoices());
         payment.setAmount(paymentRequest.getAmount());
         payment.setRefNumber(generateRandomRefNumber());
@@ -43,8 +44,8 @@ public class PaymentServiceImpl implements PaymentService {
         // Set the data to respond
         PaymentResponse paymentResponse = new PaymentResponse();
         paymentResponse.setRefNumber(saved.getRefNumber());
-        paymentResponse.setCreatedAt(saved.getCreatedAt());
         paymentResponse.setAmount(saved.getAmount());
+        paymentResponse.setCreatedAt(saved.getCreatedAt());
 
         return Response.builder()
                 .status(200)

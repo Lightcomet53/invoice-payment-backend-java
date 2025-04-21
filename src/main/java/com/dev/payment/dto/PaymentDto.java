@@ -17,11 +17,12 @@ import java.util.List;
 public class PaymentDto {
     private Long id;
     private String email;
-    private String cvc;
-    private String expiryDate;
-    private String cardHolderName;
-    private String zipCode;
     private String cardNumber;
+    private String expiryDate;
+    private String cvc;
+    private String cardHolderName;
+    private String country;
+    private String zipCode;
     private List<InvoiceRequest> invoices;
     private double amount;
     private LocalDateTime createdAt;
