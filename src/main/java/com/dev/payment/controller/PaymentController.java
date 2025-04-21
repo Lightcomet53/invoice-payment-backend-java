@@ -18,15 +18,17 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Response> createPayment(@RequestBody PaymentRequest paymentRequest, BindingResult result) throws Exception {
+        // Check if the invoice is invalid (empty or null)
         if (!paymentRequest.hasInvoices()) {
             return ResponseEntity.badRequest().body(Response.builder()
                     .status(400)
                     .message("Invoices is required!")
                     .build());
         }
+
+        // Process the payment request
         return ResponseEntity.ok(paymentService.createPayment(paymentRequest));
     }
-
 }

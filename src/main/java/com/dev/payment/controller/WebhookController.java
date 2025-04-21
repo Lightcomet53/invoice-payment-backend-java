@@ -17,8 +17,16 @@ public class WebhookController {
 
     private final WebhookService webhookService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Response> createWebhook(@RequestBody WebhookRequest webhookRequest) throws Exception {
+        // Check if the webhook url already exists in the database
+        if (webhookService.existsByWebhookUrl(webhookRequest.getUrl())) {
+            return ResponseEntity.status(409).body(Response.builder()
+                    .status(409)
+                    .message("The webhook URL already exists.").build());
+        }
+
+        // Process the webhook request
         return ResponseEntity.ok(webhookService.createWebhook(webhookRequest));
     }
 }

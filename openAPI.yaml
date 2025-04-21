@@ -5,5 +5,31 @@ info:
   version: 1.0.0
 
 paths:
-  /payments/create:
+  /api/payment:
     post:
+      summary: Process a payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './dto/PaymentRequest'
+      responses:
+        '200':
+          description: Payment Success!
+        '400':
+          description: Bad request (invoice is required)
+  /api/webhook:
+    post:
+      summary: Save a webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./dto/WebhookRequest"
+      responses:
+        '200':
+          description: Webhook created successfully!
+        '409':
+          description: 
