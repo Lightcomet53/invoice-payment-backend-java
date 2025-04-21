@@ -1,0 +1,9 @@
+openapi: 3.0.3
+info:
+  title: Invoice Payment API
+  description: API to handle invoice payments with card details
+  version: 1.0.0
+
+paths:
+  /payments/create:
+    post:

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/webhook")
+@RequestMapping("/api/webhook")
 @RequiredArgsConstructor
 public class WebhookController {
 
     private final WebhookService webhookService;
 
-    @PostMapping("/create")
+    @PostMapping("/")
     public ResponseEntity<Response> createWebhook(@RequestBody WebhookRequest webhookRequest) throws Exception {
         return ResponseEntity.ok(webhookService.createWebhook(webhookRequest));
     }

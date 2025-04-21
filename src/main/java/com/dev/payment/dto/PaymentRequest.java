@@ -14,4 +14,8 @@ public class PaymentRequest {
     private String cardNumber;
     private List<InvoiceRequest> invoices;
     private double amount;
+
+    public boolean hasInvoices() {
+        return invoices != null && !invoices.isEmpty();
+    }
 }
