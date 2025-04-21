@@ -14,6 +14,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @Service
@@ -70,6 +72,16 @@ public class WebhookServiceImpl implements WebhookService {
     @Override
     public boolean existsByWebhookUrl(String url) throws Exception {
         return webhookRepository.existsByUrl(url);
+    }
+
+    @Override
+    public boolean isValidUrl(String url) {
+        try {
+            new URL(url);
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
 }

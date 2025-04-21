@@ -10,4 +10,5 @@ public interface WebhookService {
     void sendToAllWebhook(Payment payment) throws Exception;
     void sendWithRetry(String url, PaymentDto paymentDto, int retries) throws Exception;
     boolean existsByWebhookUrl(String url) throws Exception;
+    boolean isValidUrl(String url) throws Exception;
 }

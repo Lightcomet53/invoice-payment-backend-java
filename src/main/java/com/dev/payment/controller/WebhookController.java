@@ -26,7 +26,15 @@ public class WebhookController {
                     .message("The webhook URL already exists.").build());
         }
 
+        // Check if the webhook url is valid format
+        if (!webhookService.isValidUrl(webhookRequest.getUrl())) {
+            return ResponseEntity.badRequest().body(Response.builder()
+                    .status(400)
+                    .message("The webhook URL is invalid format.")
+                    .build());
+        }
         // Process the webhook request
         return ResponseEntity.ok(webhookService.createWebhook(webhookRequest));
     }
+
 }

@@ -3,6 +3,7 @@ package com.dev.payment.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import org.hibernate.validator.constraints.URL;
 
 @Data
 @Entity
@@ -14,5 +15,6 @@ public class Webhook {
 
     @NotBlank(message = "URL is mandatory")
     @Column(unique = true)
+    @URL
     private String url;
 }
