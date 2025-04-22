@@ -51,12 +51,26 @@ invoice-payment-backend-java
    cd invoice-payment-backend-java
    ```
 
-2. Build and run the application:
+2. Build the project
+   ```bash
+   mvn clean install
+   ```
+
+3. Configure the Application
+   - Create a `application.properties` file in `src/main/resources/`
+   - Configure your database connection  and other settings:
+   - ```properties
+      spring.datasource.url=jdbc:mysql://localhost:3306/yourdbname
+      spring.datasource.username=yourusername
+      spring.datasource.password=yourpassword
+     ```
+
+4. Run the application:
    ```bash
    ./mvnw spring-boot:run
    ```
 
-3. The application should now be running at:  
+5. The application should now be running at:  
    `http://localhost:5000`
 
 ## Technologies Used
