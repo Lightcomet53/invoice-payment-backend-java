@@ -58,12 +58,7 @@ invoice-payment-backend-java
 
 3. Configure the Application
    - Create a `application.properties` file in `src/main/resources/`
-   - Configure your database connection  and other settings:
-   - ```properties
-      spring.datasource.url=jdbc:mysql://localhost:3306/yourdbname
-      spring.datasource.username=yourusername
-      spring.datasource.password=yourpassword
-     ```
+   - Copy `application-template.properties` to `application.properties` and fill in your database credentials and other necessary configurations.
 
 4. Run the application:
    ```bash
