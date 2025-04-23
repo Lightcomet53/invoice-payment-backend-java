@@ -33,6 +33,7 @@ public class WebhookController {
                     .message("The webhook URL is invalid format.")
                     .build());
         }
+
         // Process the webhook request
         return ResponseEntity.ok(webhookService.createWebhook(webhookRequest));
     }

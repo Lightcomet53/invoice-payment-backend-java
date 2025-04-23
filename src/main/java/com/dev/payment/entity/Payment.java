@@ -1,8 +1,9 @@
 package com.dev.payment.entity;
 
-import com.dev.payment.dto.InvoiceRequest;
+import com.dev.payment.dto.InvoiceItem;
 import com.dev.payment.util.InvoiceListConverter;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -50,7 +51,7 @@ public class Payment {
 
     @Convert(converter = InvoiceListConverter.class)
     @Column(columnDefinition = "LONGTEXT")
-    private List<InvoiceRequest> invoices;
+    private List<InvoiceItem> invoices;
 
     private Double amount;
 

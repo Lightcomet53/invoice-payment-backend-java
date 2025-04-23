@@ -23,7 +23,7 @@ public class PaymentDto {
     private String cardHolderName;
     private String country;
     private String zipCode;
-    private List<InvoiceRequest> invoices;
+    private List<InvoiceItem> invoices;
     private double amount;
     private LocalDateTime createdAt;
 }

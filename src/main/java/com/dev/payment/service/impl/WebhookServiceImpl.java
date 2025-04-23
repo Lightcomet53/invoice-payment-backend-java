@@ -29,12 +29,6 @@ public class WebhookServiceImpl implements WebhookService {
 
     @Override
     public Response createWebhook(WebhookRequest webhookRequest) throws Exception {
-//        if (webhookRepository.existsByUrl(webhookRequest.getUrl())) {
-//            return Response.builder()
-//                    .status(409)
-//                    .message("The webhook URL already exists.")
-//                    .build();
-//        }
         Webhook webhook = new Webhook();
         webhook.setUrl(webhookRequest.getUrl());
         webhookRepository.save(webhook);

@@ -3,6 +3,6 @@ package com.dev.payment.dto;
 import lombok.Data;
 
 @Data
-public class InvoiceRequest {
+public class InvoiceItem {
     private String id;
 }
